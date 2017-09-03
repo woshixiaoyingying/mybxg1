@@ -9,13 +9,21 @@ require.config({
         cookie : 'jquery-cookie/jquery.cookie',
         template : 'artTemplate/template-web',
         bootstrap : 'bootstrap/js/bootstrap.min',
-        common: '../js/common',
         echarts:'echarts/echarts.min',
-        login:'../js/login'
+        validate:'validate/jquery-validate.min',
+        form:'jquery-form/jquery.form',
+        common: '../js/common',
+        login:'../js/login',
+        util:'../js/util',
+        teacheradd: '../js/teacher-add',
+        teacherlist: '../js/teacher-list'
+    },
+    shim : { // 把非标准模块转化为标准模块
+        bootstrap : {
+            deps : ['jquery']
+        },
+        validate : {
+            deps : ['jquery']
+        }
     }
-    //shim : { // 把非标准模块转化为标准模块
-    //    bootstrap : {
-    //        deps : ['jquery']
-    //    }
-    //}
 })
