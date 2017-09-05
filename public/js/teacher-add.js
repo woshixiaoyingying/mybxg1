@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/8/31.
  */
 
-define(['jquery','template','util','validate','form'],function($,template,util){
+define(['jquery','template','util','validate','form','datepicker','language'],function($,template,util){
     util.setMenu('/teacher/list');
 
     var tcId=util.qs('tc_id');
@@ -32,13 +32,14 @@ define(['jquery','template','util','validate','form'],function($,template,util){
     }
 
 
+    //定义一个表单提交的方法
     function submitForm(url) {
-        $('#formId').validate({
-            sendForm: false,
-            valid: function () {
-                console.log(11);
+        $('#formId').validate({//form表单验证插件
+            sendForm: false,//阻止表单提交
+            valid: function () {//所有验证都通过时，触发的回调函数
+                console.log('验证都通过');
                 //jQuery.form提交插件
-                $(this).ajaxSubmit({
+                $(this).ajaxSubmit({//默认将表单的全部数据都提交过去，PS：data:{这里可以添加除表单内的额外参数}
                     type: 'post',
                     url: url,
                     success: function (data) {
@@ -49,10 +50,13 @@ define(['jquery','template','util','validate','form'],function($,template,util){
                     }
                 })
             },
-            description : {
+            invalid:function(){//所有验证都不通过时，触发的回调函数
+                console.log('验证都不通过');
+            },
+            description : {//验证描述
               tc_name : {
-                  required : '用户名不能为空',
-                  valid : '用户名可以使用'
+                  required : '用户名不能为空',//验证不通过时描述
+                  valid : '用户名可以使用'//验证通过描述
               },
               tc_pass : {
                   required : '密码不能为空',
@@ -68,27 +72,7 @@ define(['jquery','template','util','validate','form'],function($,template,util){
     }
 
 
-    //function submitFrom(url){
-    //    $('#formBtn').click(function(){
-    //        console.log(11);
-    //        $.ajax({
-    //            type:'post',
-    //            url:url,
-    //            data:$('#formId').serialize(),
-    //            dataType:'json',
-    //            success:function(data){
-    //                console.log(data);
-    //                if(data.code == 200) {
-    //                    location.href = '/teacher/list';
-    //                }
-    //            },
-                //error:function(data){
-                //    console.log(data);
-                //}
-//            })
-//        })
-//    }
-//
+
 });
 
 

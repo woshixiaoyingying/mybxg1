@@ -4,14 +4,14 @@
 
 define(['jquery','util','template','bootstrap'],function($,util,template){
     util.setMenu(location.pathname);
-    console.log(location.pathname);
+    //console.log(location.pathname);
     $.ajax({
         type:'get',
         url:'/api/teacher',
         dataType:'json',
         success:function(data){
             //得到数据，渲染教师列表
-           var html=template('tc-info-tpl',data);
+            var html=template('tc-info-tpl',data);
             $('#teacher-Info').html(html);
 
             //点击查看，弹出模态框

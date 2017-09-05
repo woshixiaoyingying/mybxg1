@@ -4,7 +4,7 @@
 define(['jquery'],function($){
     return {
         setMenu: function (path) {
-            $('.nav a[href="' + path + '"]').addClass('active')
+            $('.navs a[href="' + path + '"]').addClass('active')
         },
         qs: function (key) {//?uname=lisi&age=12
             var param = location.search.substring(1);

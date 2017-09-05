@@ -1,7 +1,7 @@
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','nprogress','cookie'],function($,template,NProgress){
 
-	//NProgress.start();
-	//NProgress.done();
+	NProgress.start();
+	NProgress.done();
 
 	// 控制左侧导航菜单折叠展开
 	$('.navs ul').prev('a').on('click', function () {
